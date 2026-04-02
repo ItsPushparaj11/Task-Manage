@@ -1,8 +1,10 @@
 node_modules/
 .env
+.env.local
 .DS_Store
 *.log
 frontend/client/build/
 frontend/client/.env.local
 backend/node_modules/
 frontend/client/node_modules/
+.git
