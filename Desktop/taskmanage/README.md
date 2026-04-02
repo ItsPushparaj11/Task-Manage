@@ -178,4 +178,4 @@ For any questions or support, please open an issue on GitHub.
 
 ---
 
-**Built with ❤️ by Pushpa Raj**
+**Built with ❤️ by Pushpa Raj Dhamala **
