@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import API_URL from "./config";
 
 export default function Dashboard() {
   const [tasks, setTasks] = useState([]);
@@ -9,7 +10,7 @@ export default function Dashboard() {
 
   const fetchTasks = async () => {
     try {
-      const res = await axios.get("http://localhost:5000/api/tasks");
+      const res = await axios.get(`${API_URL}/api/tasks`);
       setTasks(res.data);
     } catch (err) {
       console.error("Error fetching tasks:", err);
@@ -23,7 +24,7 @@ export default function Dashboard() {
   const addTask = async () => {
     if (!title.trim()) return;
     try {
-      await axios.post("http://localhost:5000/api/tasks", {
+      await axios.post(`${API_URL}/api/tasks`, {
         title,
         completed: false
       });
@@ -36,7 +37,7 @@ export default function Dashboard() {
 
   const deleteTask = async (id) => {
     try {
-      await axios.delete(`http://localhost:5000/api/tasks/${id}`);
+      await axios.delete(`${API_URL}/api/tasks/${id}`);
       fetchTasks();
     } catch (err) {
       console.error("Error deleting task:", err);

@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
+import API_URL from "./config";
 
 export default function Signup() {
   const [email, setEmail] = useState("");
@@ -11,7 +12,7 @@ export default function Signup() {
 
   const handleSignup = async () => {
     try {
-      await axios.post("http://localhost:5000/api/auth/signup", {
+      await axios.post(`${API_URL}/api/auth/signup`, {
         email,
         password
       });
