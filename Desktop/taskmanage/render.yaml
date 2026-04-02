@@ -1,0 +1,22 @@
+services:
+  - type: web
+    name: taskmanage-backend
+    runtime: node
+    buildCommand: npm install
+    startCommand: npm start
+    envVars:
+      - key: MONGO_URI
+        scope: run
+      - key: JWT_SECRET
+        scope: run
+      - key: PORT
+        value: "5000"
+
+  - type: web
+    name: taskmanage-frontend
+    runtime: node
+    buildCommand: npm install
+    startCommand: npm start
+    envVars:
+      - key: PORT
+        value: "3000"

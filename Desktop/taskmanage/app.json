@@ -1,0 +1,18 @@
+{
+  "name": "taskmanage",
+  "description": "Task Manager Application",
+  "keywords": ["node", "express", "react", "mongodb"],
+  "buildpacks": [
+    {
+      "url": "heroku/nodejs"
+    }
+  ],
+  "env": {
+    "MONGO_URI": {
+      "description": "MongoDB connection string"
+    },
+    "JWT_SECRET": {
+      "description": "JWT secret key for authentication"
+    }
+  }
+}
