@@ -1,7 +1,9 @@
 services:
   - type: web
     name: taskmanage-backend
-    runtime: node
+    env: node
+    plan: free
+    rootDir: backend
     buildCommand: npm install
     startCommand: npm start
     envVars:
@@ -9,14 +11,20 @@ services:
         scope: run
       - key: JWT_SECRET
         scope: run
-      - key: PORT
-        value: "5000"
+      - key: NODE_ENV
+        value: production
 
   - type: web
     name: taskmanage-frontend
-    runtime: node
-    buildCommand: npm install
-    startCommand: npm start
+    env: node
+    plan: free
+    rootDir: frontend/client
+    buildCommand: npm install && CI=false npm run build
+    startCommand: npx serve -s build -l 3000
     envVars:
-      - key: PORT
-        value: "3000"
+      - key: REACT_APP_API_URL
+        scope: run
+      - key: NODE_ENV
+        value: production
+      - key: CI
+        value: "false"
