@@ -172,10 +172,30 @@ Feel free to fork this repository and submit pull requests for any improvements.
 
 This project is open source and available under the MIT License.
 
+## Render Deployment (Backend + Frontend)
+
+1. Push your repo to GitHub if not already.
+2. Add/verify `render.yaml` in repo root.
+3. In Render dashboard, click **New** > **Web Service** and select the `taskmanage` repo.
+4. Backend service will be created from `backend` root with:
+   - Build: `npm install`
+   - Start: `npm start`
+   - Env vars: `MONGO_URI`, `JWT_SECRET` (set in Render Environment settings)
+5. Create a **Static Site** service from `frontend/client`:
+   - Build: `npm install && npm run build`
+   - Publish directory: `build`
+   - Env var: `REACT_APP_API_URL=https://<backend-service>.onrender.com`
+6. Wait for auto-deploy; verify log `MongoDB Connected` and `Server running on port`.
+
+### Render env var notes
+- `MONGO_URI` = production Atlas connection string
+- `JWT_SECRET` = secure random
+- `REACT_APP_API_URL` = backend URL from Render (e.g., `https://taskmanage-backend.onrender.com`)
+
 ## Contact
 
 For any questions or support, please open an issue on GitHub.
 
 ---
 
-**Built with ❤️ by Pushpa Raj Dhamala **
+**Built with ❤️ by Pushpa Raj Dhamala and Harsh Chavan **
